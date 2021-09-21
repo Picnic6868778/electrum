@@ -2582,7 +2582,6 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, QtEventListener):
             g = self.geometry()
             self.wallet.db.put("winpos-qt", [g.left(),g.top(),
                                                   g.width(),g.height()])
-        self.wallet.db.put("qt-console-history", self.console.history[-50:])
         if self.qr_window:
             self.qr_window.close()
         self.close_wallet()
