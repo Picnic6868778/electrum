@@ -162,8 +162,8 @@ class QEWalletDB(QObject):
         else:  # storage not encrypted; but it might still have a keystore pw
             # FIXME hack... load both db and full wallet, just to tell if it has keystore pw.
             #       this also completely ignores db.requires_split(), db.get_action(), etc
-            db = WalletDB(self._storage.read(), manual_upgrades=False)
-            wallet = Wallet(db, self._storage, config=self._config)
+            db = WalletDB(self._storage.read(), storage=self._storage, manual_upgrades=False)
+            wallet = Wallet(db, config=self._config)
             self.needsPassword = wallet.has_password()
             if self.needsPassword:
                 try:
